@@ -7,16 +7,12 @@ import org.springframework.data.mongodb.repository.MongoRepository
 data class Collection (
     var id: String? = null,
     var alias: String,
-//    var fields: MutableList<FieldMeta>
+    var fields: MutableList<FieldMeta>? = mutableListOf()
 )
 
 data class FieldMeta(
     var name: String,
-    var type: FieldType
+    var type: String
 )
 
-enum class FieldType {
-    STRING, NUMBER, DOCUMENT, LIST, OBJECT_ID, DATE
-}
-
-interface CollectionRepository : MongoRepository<Collection, String> {}
+interface CollectionRepository : MongoRepository<Collection, String>
