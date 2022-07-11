@@ -1,0 +1,12 @@
+server:
+  error:
+    include-message: always
+spring:
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+  data:
+    mongodb:
+      uri: mongodb://admin:admin@localhost:27017
+      database: dpt_core
