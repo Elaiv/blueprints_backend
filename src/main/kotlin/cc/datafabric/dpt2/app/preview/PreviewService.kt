@@ -14,6 +14,7 @@ class PreviewService(
             .getDatabase("dpt_data")
             .getCollection("collection_$id")
             .aggregate(listOf(
+//                Document("\$unset", "_id"),
                 Document("\$set", Document("_id", Document("\$toString", "\$_id"))),
                 Document("\$limit", limit)
             ))
