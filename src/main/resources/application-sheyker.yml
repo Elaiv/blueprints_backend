@@ -1,6 +1,10 @@
 server:
   error:
     include-message: always
+  tomcat:
+    relaxed-path-chars: "[,],|"
+    relaxedQueryChars: '[,],|,{,},^,\,`,<,>'
+
 spring:
   servlet:
     multipart:
@@ -8,5 +12,5 @@ spring:
       max-request-size: 200MB
   data:
     mongodb:
-      uri: mongodb://admin:admin@localhost:27017
+      uri: mongodb://localhost:27017
       database: dpt_core
