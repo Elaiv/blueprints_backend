@@ -10,7 +10,10 @@ class PreviewFieldsService(
     val mongoClient: MongoClient
 ) {
     fun getPreviewFields(id: String, stages: String): ArrayList<Document> {
-        var str = "{\"data\":[$stages]}"
+        var str = "{\"data\":[$stages, " +
+                "{\"\$unset\": \"_id\"}, " +
+                "{\"\$project\":{\"arrayofkeyvalue\":{\"\$objectToArray\":\"\$\$ROOT\"}}}, " +
+                "{\"\$project\":{\"keys\":\"\$arrayofkeyvalue.kы\"}}]}"
         var str2 = Document.parse(str).get("data")
         return mongoClient
             .getDatabase("dpt_data")
